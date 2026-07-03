@@ -12,6 +12,65 @@ if (searchInput) {
   });
 }
 
+// ---------- sketch lightbox (start page) ----------
+const sketchStrip = document.querySelector('.sketch-strip');
+if (sketchStrip) {
+  const likes = JSON.parse(localStorage.getItem('comSketchLikes') || '{}');
+
+  const overlay = document.createElement('div');
+  overlay.className = 'lightbox';
+  overlay.hidden = true;
+  overlay.innerHTML =
+    '<button class="lightbox-close" aria-label="Schließen">✕</button>' +
+    '<img alt="">' +
+    '<button class="lightbox-like" aria-label="Gefällt mir"><span class="heart">♥</span><span class="like-label">Gefällt mir!</span></button>';
+  document.body.appendChild(overlay);
+
+  const overlayImg = overlay.querySelector('img');
+  const likeBtn = overlay.querySelector('.lightbox-like');
+  const likeLabel = overlay.querySelector('.like-label');
+  let currentSrc = null;
+
+  const updateLikeBtn = () => {
+    const liked = !!likes[currentSrc];
+    likeBtn.classList.toggle('liked', liked);
+    likeLabel.textContent = liked ? 'Gefällt dir! ★' : 'Gefällt mir!';
+  };
+
+  const open = (img) => {
+    currentSrc = img.getAttribute('src');
+    overlayImg.src = currentSrc;
+    overlayImg.alt = img.alt;
+    updateLikeBtn();
+    overlay.hidden = false;
+    document.body.style.overflow = 'hidden';
+  };
+
+  const close = () => {
+    overlay.hidden = true;
+    document.body.style.overflow = '';
+  };
+
+  sketchStrip.querySelectorAll('img').forEach((img) => {
+    img.addEventListener('click', () => open(img));
+  });
+
+  overlay.querySelector('.lightbox-close').addEventListener('click', close);
+  overlay.addEventListener('click', (e) => { if (e.target === overlay) close(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !overlay.hidden) close(); });
+
+  likeBtn.addEventListener('click', () => {
+    likes[currentSrc] = !likes[currentSrc];
+    localStorage.setItem('comSketchLikes', JSON.stringify(likes));
+    updateLikeBtn();
+    if (likes[currentSrc]) {
+      likeBtn.classList.remove('pop');
+      void likeBtn.offsetWidth;
+      likeBtn.classList.add('pop');
+    }
+  });
+}
+
 // ---------- quiz (danger page) ----------
 const quiz = document.querySelector('.quiz');
 if (quiz) {
