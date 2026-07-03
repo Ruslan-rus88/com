@@ -1,0 +1,507 @@
+/* COM — kids webapp, hand-drawn crayon style */
+
+:root {
+  --orange: #E8823C;
+  --orange-dark: #B05A1A;
+  --orange-bg: #F5C9A4;
+  --orange-soft: rgba(232, 130, 60, 0.3);
+  --blue: #5B9BD5;
+  --blue-dark: #2E6BA8;
+  --blue-bg: #BBD7F0;
+  --blue-soft: rgba(91, 155, 213, 0.3);
+  --green: #8CBF3F;
+  --green-dark: #5C8A1E;
+  --green-bg: #D3E8B0;
+  --green-soft: rgba(140, 191, 63, 0.3);
+  --paper: #F7F3EA;
+  --card: #FFFDF8;
+  --ink: #4A3B2A;
+  --ink-soft: #7A6A54;
+  --ink-faint: #A5947C;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  font-family: 'Patrick Hand', cursive;
+  color: var(--ink);
+  overflow-x: hidden;
+}
+
+.display { font-family: 'Gochi Hand', cursive; }
+
+/* ---------- animations ---------- */
+@keyframes floaty {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-14px) rotate(2deg); }
+}
+@keyframes bouncy {
+  0%, 100% { transform: translateY(0) scale(1, 1); }
+  40% { transform: translateY(-18px) scale(0.96, 1.05); }
+  60% { transform: translateY(0) scale(1.04, 0.94); }
+}
+@keyframes wigglee {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+@keyframes swayy {
+  0%, 100% { transform: rotate(-6deg); }
+  50% { transform: rotate(6deg); }
+}
+@keyframes wavemove {
+  0% { background-position-x: 0; }
+  100% { background-position-x: -80px; }
+}
+@keyframes popin {
+  0% { transform: scale(0.6); opacity: 0; }
+  70% { transform: scale(1.08); }
+  100% { transform: scale(1); opacity: 1; }
+}
+@keyframes tent {
+  0%, 100% { transform: rotate(-8deg); }
+  50% { transform: rotate(8deg); }
+}
+
+/* ---------- header / nav ---------- */
+.topnav {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 28px;
+  flex-wrap: wrap;
+}
+
+.logo {
+  font-family: 'Gochi Hand', cursive;
+  font-size: 44px;
+  letter-spacing: 2px;
+  display: flex;
+  gap: 2px;
+  text-decoration: none;
+}
+.logo span { display: inline-block; animation: wigglee 2.4s ease-in-out infinite; }
+.logo span:nth-child(1) { color: var(--orange); }
+.logo span:nth-child(2) { color: var(--blue); animation-delay: 0.3s; }
+.logo span:nth-child(3) { color: var(--green); animation-delay: 0.6s; }
+
+.topnav .spacer { flex: 1; }
+
+.nav-links { display: flex; gap: 12px; flex-wrap: wrap; }
+
+.nav-btn {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 22px;
+  padding: 10px 22px;
+  border-radius: 30px 26px 32px 24px;
+  border: 3px solid;
+  background: var(--card);
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: transform 0.15s;
+}
+.nav-btn:hover { transform: rotate(0deg) scale(1.08) !important; }
+
+.nav-btn.orange { border-color: var(--orange); color: var(--orange-dark); transform: rotate(-2deg); }
+.nav-btn.blue { border-color: var(--blue); color: var(--blue-dark); transform: rotate(2deg); }
+.nav-btn.green { border-color: var(--green); color: var(--green-dark); transform: rotate(-1.5deg); }
+.nav-btn.orange.tilt-r { transform: rotate(1.5deg); }
+
+.nav-btn.orange.active { background: var(--orange-bg); }
+.nav-btn.blue.active { background: var(--blue-bg); }
+.nav-btn.green.active { background: var(--green-bg); }
+
+/* ---------- crayon wave dividers ---------- */
+.wave {
+  height: 26px;
+  background-repeat: repeat-x;
+  background-size: 80px 26px;
+  animation: wavemove 3s linear infinite;
+}
+.wave.orange {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='26' viewBox='0 0 80 26'%3E%3Cpath d='M0 13 Q 20 0 40 13 Q 60 26 80 13' stroke='%23E8823C' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+.wave.blue {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='26' viewBox='0 0 80 26'%3E%3Cpath d='M0 13 Q 20 0 40 13 Q 60 26 80 13' stroke='%235B9BD5' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  animation-duration: 4s;
+  animation-direction: reverse;
+}
+
+/* ---------- page shell ---------- */
+.page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 28px 80px;
+  animation: popin 0.4s ease-out;
+}
+.page.narrow { max-width: 800px; }
+.page.centered { text-align: center; }
+
+.page h1 {
+  font-family: 'Gochi Hand', cursive;
+  font-size: 52px;
+  text-align: center;
+  margin: 0 0 6px;
+  line-height: 1.15;
+}
+.page .lead {
+  text-align: center;
+  font-size: 24px;
+  color: var(--ink-soft);
+  margin: 0 0 40px;
+}
+
+footer p {
+  text-align: center;
+  font-size: 18px;
+  color: var(--ink-faint);
+  padding-bottom: 26px;
+}
+footer .wave { margin-top: 20px; }
+
+/* ---------- start page ---------- */
+.hero-title { font-size: 54px !important; margin-bottom: 8px !important; }
+.hero-title .c-orange { color: var(--orange); }
+.hero-title .c-blue { color: var(--blue); }
+.hero-title .c-green { color: var(--green); }
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 560px;
+  margin: 0 auto 56px;
+  background: var(--card);
+  border: 3px solid var(--green);
+  border-radius: 40px 34px 42px 36px;
+  padding: 12px 22px;
+  box-shadow: 4px 5px 0 var(--green-soft);
+}
+.search input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 24px;
+  color: var(--ink);
+}
+.search input::placeholder { color: var(--ink-faint); }
+
+.home-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 28px;
+}
+
+.home-card {
+  background: var(--card);
+  border: 3.5px solid;
+  border-radius: 34px 26px 38px 24px;
+  padding: 28px 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  transition: transform 0.18s;
+}
+.home-card:hover { transform: rotate(0deg) translateY(-6px) scale(1.03) !important; }
+
+.home-card .art {
+  font-size: 60px;
+  height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: floaty 3s ease-in-out infinite;
+}
+.home-card .title {
+  font-family: 'Gochi Hand', cursive;
+  font-size: 32px;
+  margin: 10px 0 6px;
+}
+.home-card .sub {
+  font-size: 20px;
+  color: var(--ink-soft);
+  line-height: 1.35;
+}
+
+.home-card.blue { border-color: var(--blue); box-shadow: 5px 6px 0 var(--blue-soft); transform: rotate(-1.5deg); }
+.home-card.blue .title { color: var(--blue); }
+.home-card.green { border-color: var(--green); box-shadow: 5px 6px 0 var(--green-soft); transform: rotate(1.5deg); }
+.home-card.green .title { color: var(--green); }
+.home-card.green .art { animation-delay: 0.4s; }
+.home-card.orange { border-color: var(--orange); box-shadow: 5px 6px 0 var(--orange-soft); transform: rotate(-1deg); }
+.home-card.orange .title { color: var(--orange); }
+.home-card.orange .art { animation-delay: 0.8s; }
+
+/* sketchbook strip */
+.sketchbook { margin-top: 70px; }
+.sketchbook h2 {
+  font-family: 'Gochi Hand', cursive;
+  font-size: 32px;
+  color: var(--blue);
+  text-align: center;
+  margin: 0 0 18px;
+}
+.sketch-strip {
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.sketch-strip img {
+  width: 170px;
+  height: 220px;
+  object-fit: cover;
+  border: 4px solid var(--card);
+  border-radius: 10px;
+  box-shadow: 4px 6px 12px rgba(74, 59, 42, 0.18);
+  transition: transform 0.18s;
+}
+.sketch-strip img:hover { transform: rotate(0deg) scale(1.5); z-index: 5; position: relative; }
+.sketch-strip img:nth-child(1) { outline: 3px solid var(--orange); transform: rotate(-3deg); }
+.sketch-strip img:nth-child(2) { outline: 3px solid var(--blue); transform: rotate(2deg); }
+.sketch-strip img:nth-child(3) { outline: 3px solid var(--green); transform: rotate(-2deg); }
+.sketch-strip img:nth-child(4) { outline: 3px solid var(--orange); transform: rotate(3deg); }
+.sketchbook .caption {
+  text-align: center;
+  font-size: 19px;
+  color: var(--ink-faint);
+  margin-top: 16px;
+}
+
+/* ---------- danger page ---------- */
+.danger-title { color: var(--orange); animation: wigglee 1.8s ease-in-out infinite; }
+
+.danger-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 30px;
+}
+
+.danger-card {
+  background: var(--card);
+  border: 3.5px solid;
+  padding: 26px;
+  text-align: center;
+}
+.danger-card .art {
+  height: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.danger-card .name {
+  font-family: 'Gochi Hand', cursive;
+  font-size: 30px;
+  margin: 8px 0 4px;
+}
+.danger-card p {
+  font-size: 20px;
+  color: var(--ink-soft);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.danger-card.qualle { border-color: var(--blue); border-radius: 30px 38px 26px 34px; box-shadow: 5px 6px 0 var(--blue-soft); }
+.danger-card.qualle .name { color: var(--blue); }
+.danger-card.qualle .art { animation: floaty 3.4s ease-in-out infinite; }
+
+.danger-card.kaktus { border-color: var(--green); border-radius: 36px 26px 34px 30px; box-shadow: 5px 6px 0 var(--green-soft); }
+.danger-card.kaktus .name { color: var(--green); }
+.danger-card.kaktus .art { align-items: flex-end; }
+.danger-card.kaktus svg { transform-origin: 55px 120px; animation: swayy 3s ease-in-out infinite; }
+
+.danger-card.spinne { border-color: var(--orange); border-radius: 28px 34px 30px 38px; box-shadow: 5px 6px 0 var(--orange-soft); }
+.danger-card.spinne .name { color: var(--orange); }
+.danger-card.spinne .art { animation: bouncy 2.6s ease-in-out infinite; }
+
+.tentacle { animation: tent 1.6s ease-in-out infinite; }
+.tentacle.t2 { animation-delay: 0.25s; }
+.tentacle.t3 { animation-delay: 0.5s; }
+
+/* quiz */
+.quiz {
+  margin-top: 60px;
+  background: var(--card);
+  border: 3.5px dashed var(--blue);
+  border-radius: 30px;
+  padding: 30px;
+  text-align: center;
+}
+.quiz .quiz-title {
+  font-family: 'Gochi Hand', cursive;
+  font-size: 32px;
+  color: var(--blue);
+  margin-bottom: 6px;
+}
+.quiz .question { font-size: 23px; margin: 0 0 22px; }
+.quiz-options {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.quiz-options button {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 23px;
+  padding: 12px 28px;
+  border-radius: 28px 24px 30px 22px;
+  border: 3px solid;
+  background: var(--card);
+  color: var(--ink);
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+.quiz-options button:hover { transform: scale(1.1) rotate(-2deg); }
+.quiz-options button.orange { border-color: var(--orange); }
+.quiz-options button.green { border-color: var(--green); }
+.quiz-options button.blue { border-color: var(--blue); }
+.quiz-options button.picked-right { background: var(--green-bg); }
+.quiz-options button.picked-wrong { background: var(--orange-bg); }
+
+.quiz-feedback {
+  font-size: 26px;
+  font-family: 'Gochi Hand', cursive;
+  margin: 22px 0 0;
+  animation: popin 0.3s ease-out;
+}
+.quiz-feedback.right { color: var(--green-dark); }
+.quiz-feedback.wrong { color: var(--orange-dark); }
+
+/* ---------- abc page ---------- */
+.abc-title { color: var(--blue); }
+
+.abc-creature { display: inline-block; animation: bouncy 2.8s ease-in-out infinite; }
+
+.abc-bubble-slot { min-height: 90px; margin: 8px 0 26px; }
+.abc-bubble {
+  display: inline-block;
+  background: var(--card);
+  border: 3.5px solid var(--orange);
+  border-radius: 40px 36px 42px 34px;
+  padding: 12px 34px;
+  font-family: 'Gochi Hand', cursive;
+  font-size: 46px;
+  color: var(--orange);
+  animation: popin 0.25s ease-out;
+}
+
+.abc-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  max-width: 760px;
+  margin: 0 auto;
+}
+.abc-grid button {
+  width: 62px;
+  height: 62px;
+  font-family: 'Gochi Hand', cursive;
+  font-size: 30px;
+  border-radius: 20px 16px 22px 15px;
+  border: 3px solid;
+  background: var(--card);
+  cursor: pointer;
+  transition: transform 0.12s;
+}
+.abc-grid button:hover { transform: scale(1.2) rotate(0deg) !important; }
+.abc-grid button.orange { border-color: var(--orange); color: var(--orange); }
+.abc-grid button.blue { border-color: var(--blue); color: var(--blue); }
+.abc-grid button.green { border-color: var(--green); color: var(--green); }
+.abc-grid button.active { background: #FFF3DF; }
+
+/* ---------- friends page ---------- */
+.friends-title { color: var(--green); }
+
+.friend-btn {
+  font-family: 'Gochi Hand', cursive;
+  font-size: 36px;
+  padding: 24px 54px;
+  border-radius: 50px 42px 54px 44px;
+  border: 4px solid var(--orange);
+  background: var(--orange-bg);
+  color: var(--orange-dark);
+  cursor: pointer;
+  box-shadow: 0 8px 0 #D96F28;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+.friend-btn:hover { transform: translateY(3px); box-shadow: 0 5px 0 #D96F28; }
+.friend-btn:active { transform: translateY(8px); box-shadow: 0 0 0 #D96F28; }
+
+.friends-row {
+  margin-top: 50px;
+  min-height: 140px;
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.friend { animation: popin 0.35s ease-out; text-align: center; }
+.friend .avatar {
+  width: 86px;
+  height: 86px;
+  border-radius: 50%;
+  border: 3.5px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: floaty 3s ease-in-out infinite;
+}
+.friend .name { font-size: 19px; margin-top: 6px; color: var(--ink-soft); }
+
+.friend-msg {
+  font-family: 'Gochi Hand', cursive;
+  font-size: 30px;
+  color: var(--orange);
+  animation: popin 0.3s ease-out;
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 700px) {
+  .topnav { padding: 12px 16px; justify-content: center; }
+  .topnav .spacer { display: none; }
+  .logo { font-size: 36px; width: 100%; justify-content: center; }
+  .nav-links { justify-content: center; }
+  .nav-btn { font-size: 19px; padding: 8px 16px; }
+
+  .page { padding: 28px 18px 60px; }
+  .page h1 { font-size: 38px; }
+  .hero-title { font-size: 40px !important; }
+  .page .lead { font-size: 20px; margin-bottom: 30px; }
+
+  .search { margin-bottom: 40px; padding: 10px 16px; }
+  .search input { font-size: 20px; }
+
+  .home-card .art { font-size: 48px; height: 60px; }
+  .home-card .title { font-size: 27px; }
+
+  .sketch-strip { gap: 12px; }
+  .sketch-strip img { width: calc(50% - 8px); max-width: 170px; height: auto; aspect-ratio: 17 / 22; }
+  .sketch-strip img:hover { transform: rotate(0deg) scale(1.15); }
+
+  .quiz { padding: 22px 16px; }
+  .quiz-options button { font-size: 20px; padding: 10px 20px; }
+
+  .abc-creature svg { width: 200px; height: auto; }
+  .abc-bubble { font-size: 36px; padding: 10px 26px; }
+  .abc-bubble-slot { min-height: 74px; }
+  .abc-grid { gap: 9px; }
+  .abc-grid button { width: 50px; height: 50px; font-size: 25px; }
+
+  .friend-btn { font-size: 28px; padding: 18px 36px; }
+}
+
+@media (max-width: 380px) {
+  .abc-grid button { width: 44px; height: 44px; font-size: 22px; }
+  .nav-btn { font-size: 17px; padding: 7px 13px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
