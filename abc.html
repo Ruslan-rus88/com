@@ -19,6 +19,7 @@
       <a class="nav-btn orange" href="index.html">Start</a>
       <a class="nav-btn blue" href="gefaehrlich.html">Gefährlich!</a>
       <a class="nav-btn green active" href="abc.html">ABC-Tier</a>
+      <a class="nav-btn blue" href="123.html">1 2 3</a>
       <a class="nav-btn orange tilt-r" href="freunde.html">Freunde</a>
     </div>
   </nav>
@@ -50,7 +51,20 @@
 
   <div class="abc-bubble-slot" aria-live="polite"></div>
 
-  <div class="abc-grid"></div>
+  <div class="abc-grid" id="buchstaben"></div>
+
+  <div class="letter-game" id="spiel">
+    <h2 class="letter-game-title">Buchstaben-Spiel</h2>
+    <p class="letter-game-lead">Welcher Buchstabe fehlt? Tippe auf den richtigen!</p>
+    <div class="letter-animal" aria-hidden="true"></div>
+    <div class="letter-word-row">
+      <div class="letter-word" aria-live="polite"></div>
+      <button class="say-btn" aria-label="Tiername vorlesen" title="Vorlesen">🔊</button>
+    </div>
+    <div class="letter-options"></div>
+    <p class="letter-feedback" hidden></p>
+    <button class="next-animal" hidden>Nächstes Tier →</button>
+  </div>
 </main>
 
 <footer>

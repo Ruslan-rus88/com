@@ -19,6 +19,7 @@
       <a class="nav-btn orange" href="index.html">Start</a>
       <a class="nav-btn blue active" href="gefaehrlich.html">Gefährlich!</a>
       <a class="nav-btn green" href="abc.html">ABC-Tier</a>
+      <a class="nav-btn blue" href="123.html">1 2 3</a>
       <a class="nav-btn orange tilt-r" href="freunde.html">Freunde</a>
     </div>
   </nav>
@@ -31,7 +32,7 @@
 
   <div class="danger-cards">
 
-    <div class="danger-card qualle">
+    <div class="danger-card qualle" id="qualle">
       <div class="art">
         <svg width="110" height="120" viewBox="0 0 110 120" aria-hidden="true">
           <path d="M15 60 Q 15 15, 55 15 Q 95 15, 95 60 Z" fill="#BBD7F0" stroke="#5B9BD5" stroke-width="4"></path>
@@ -46,7 +47,7 @@
       <p>Quallen sind giftig! Nicht anfassen — auch nicht am Strand.</p>
     </div>
 
-    <div class="danger-card kaktus">
+    <div class="danger-card kaktus" id="kaktus">
       <div class="art">
         <svg width="110" height="122" viewBox="0 0 110 122" aria-hidden="true">
           <rect x="42" y="20" width="26" height="90" rx="13" fill="#B9D98A" stroke="#8CBF3F" stroke-width="4"></rect>
@@ -62,7 +63,7 @@
       <p>Autsch! Kakteen haben Stacheln. Nur gucken, nicht drücken.</p>
     </div>
 
-    <div class="danger-card spinne">
+    <div class="danger-card spinne" id="spinne">
       <div class="art">
         <svg width="120" height="110" viewBox="0 0 120 110" aria-hidden="true">
           <g stroke="#4A3B2A" stroke-width="3.5" stroke-linecap="round">
@@ -77,17 +78,129 @@
       <div class="name">Die Spinne</div>
       <p>Manche Spinnen beißen. Lass sie in Ruhe, dann ist alles gut.</p>
     </div>
+
+    <div class="danger-card hai" id="hai">
+      <div class="art">
+        <svg width="132" height="100" viewBox="0 0 132 100" aria-hidden="true">
+          <path d="M110 50 L 126 30 L 121 50 L 126 70 Z" fill="#BBD7F0" stroke="#5B9BD5" stroke-width="4" stroke-linejoin="round"></path>
+          <path d="M62 28 L 70 8 L 82 30" fill="#BBD7F0" stroke="#5B9BD5" stroke-width="4" stroke-linejoin="round"></path>
+          <path d="M16 52 Q 38 22, 72 24 Q 104 26, 113 50 Q 104 74, 72 76 Q 38 78, 16 52 Z" fill="#BBD7F0" stroke="#5B9BD5" stroke-width="4"></path>
+          <path d="M88 44 q 6 6, 0 12 M 97 46 q 5 5, 0 9" stroke="#5B9BD5" stroke-width="3" fill="none" stroke-linecap="round"></path>
+          <circle cx="38" cy="44" r="4" fill="#4A3B2A"></circle>
+          <path d="M28 58 q 8 8, 20 6" stroke="#4A3B2A" stroke-width="3" fill="none" stroke-linecap="round"></path>
+          <path d="M31 61 l 3 5 l 3.5 -4 l 3 5 l 3.5 -4" stroke="#4A3B2A" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+      </div>
+      <div class="name">Der Hai</div>
+      <p>Haie haben scharfe Zähne. Im Meer lieber Abstand halten!</p>
+    </div>
+
+    <div class="danger-card loewe" id="loewe">
+      <div class="art">
+        <svg width="110" height="112" viewBox="0 0 110 112" aria-hidden="true">
+          <circle cx="55" cy="56" r="44" fill="#E8B48C" stroke="#E8823C" stroke-width="4"></circle>
+          <circle cx="55" cy="56" r="28" fill="#F6E3C5" stroke="#E8823C" stroke-width="4"></circle>
+          <circle cx="46" cy="50" r="3.5" fill="#4A3B2A"></circle><circle cx="64" cy="50" r="3.5" fill="#4A3B2A"></circle>
+          <path d="M51 60 L 59 60 L 55 65 Z" fill="#4A3B2A"></path>
+          <path d="M55 65 q 0 6, -7 6 M 55 65 q 0 6, 7 6" stroke="#4A3B2A" stroke-width="2.5" fill="none" stroke-linecap="round"></path>
+        </svg>
+      </div>
+      <div class="name">Der Löwe</div>
+      <p>Der Löwe ist der König der Tiere — und kein Kuscheltier!</p>
+    </div>
+
+    <div class="danger-card tiger" id="tiger">
+      <div class="art">
+        <svg width="112" height="108" viewBox="0 0 112 108" aria-hidden="true">
+          <circle cx="28" cy="24" r="13" fill="#E8B48C" stroke="#E8823C" stroke-width="4"></circle>
+          <circle cx="84" cy="24" r="13" fill="#E8B48C" stroke="#E8823C" stroke-width="4"></circle>
+          <circle cx="56" cy="62" r="42" fill="#E8B48C" stroke="#E8823C" stroke-width="4"></circle>
+          <g stroke="#4A3B2A" stroke-width="4" stroke-linecap="round">
+            <line x1="56" y1="24" x2="56" y2="36"></line>
+            <line x1="18" y1="52" x2="30" y2="56"></line><line x1="20" y1="68" x2="31" y2="68"></line>
+            <line x1="94" y1="52" x2="82" y2="56"></line><line x1="92" y1="68" x2="81" y2="68"></line>
+          </g>
+          <circle cx="46" cy="56" r="3.5" fill="#4A3B2A"></circle><circle cx="66" cy="56" r="3.5" fill="#4A3B2A"></circle>
+          <path d="M52 68 L 60 68 L 56 73 Z" fill="#4A3B2A"></path>
+          <path d="M56 73 q 0 6, -7 6 M 56 73 q 0 6, 7 6" stroke="#4A3B2A" stroke-width="2.5" fill="none" stroke-linecap="round"></path>
+        </svg>
+      </div>
+      <div class="name">Der Tiger</div>
+      <p>Tiger sind stark und schnell. Nur im Zoo angucken!</p>
+    </div>
+
+    <div class="danger-card oktopus" id="oktopus">
+      <div class="art">
+        <svg width="120" height="122" viewBox="0 0 120 122" aria-hidden="true">
+          <circle cx="60" cy="46" r="33" fill="#BBD7F0" stroke="#5B9BD5" stroke-width="4"></circle>
+          <circle cx="49" cy="42" r="4" fill="#4A3B2A"></circle><circle cx="71" cy="42" r="4" fill="#4A3B2A"></circle>
+          <path d="M51 55 q 9 7, 18 0" stroke="#4A3B2A" stroke-width="3" fill="none" stroke-linecap="round"></path>
+          <g class="tentacle" style="transform-origin: 38px 74px;"><path d="M38 74 q -8 16, 0 30 q 6 10, -3 14" stroke="#5B9BD5" stroke-width="4" fill="none" stroke-linecap="round"></path></g>
+          <g class="tentacle t2" style="transform-origin: 53px 78px;"><path d="M53 78 q 6 16, -2 30 q -5 10, 3 12" stroke="#5B9BD5" stroke-width="4" fill="none" stroke-linecap="round"></path></g>
+          <g class="tentacle t3" style="transform-origin: 68px 78px;"><path d="M68 78 q -6 16, 2 30 q 5 10, -3 12" stroke="#5B9BD5" stroke-width="4" fill="none" stroke-linecap="round"></path></g>
+          <g class="tentacle" style="transform-origin: 83px 74px;"><path d="M83 74 q 8 16, 0 30 q -6 10, 3 14" stroke="#5B9BD5" stroke-width="4" fill="none" stroke-linecap="round"></path></g>
+        </svg>
+      </div>
+      <div class="name">Der Oktopus</div>
+      <p>Manche Oktopusse sind giftig. Lieber nicht anfassen!</p>
+    </div>
+
+    <div class="danger-card strom" id="strom">
+      <div class="art">
+        <svg width="96" height="122" viewBox="0 0 96 122" aria-hidden="true">
+          <path d="M52 8 L 22 64 L 42 64 L 32 114 L 74 48 L 50 48 Z" fill="#F5C97B" stroke="#E8823C" stroke-width="4" stroke-linejoin="round"></path>
+          <g stroke="#E8823C" stroke-width="3" stroke-linecap="round">
+            <line x1="76" y1="14" x2="84" y2="6"></line><line x1="82" y1="26" x2="92" y2="24"></line>
+            <line x1="12" y1="34" x2="4" y2="28"></line>
+          </g>
+          <circle cx="42" cy="34" r="3.5" fill="#4A3B2A"></circle><circle cx="54" cy="34" r="3.5" fill="#4A3B2A"></circle>
+          <path d="M42 43 q 6 5, 12 0" stroke="#4A3B2A" stroke-width="2.5" fill="none" stroke-linecap="round"></path>
+        </svg>
+      </div>
+      <div class="name">Der Strom</div>
+      <p>Strom ist unsichtbar und stark. Finger weg von der Steckdose!</p>
+    </div>
+
+    <div class="danger-card feuer" id="feuer">
+      <div class="art">
+        <svg width="100" height="122" viewBox="0 0 100 122" aria-hidden="true">
+          <path d="M50 8 Q 62 30, 78 44 Q 88 58, 86 78 Q 82 108, 50 112 Q 18 108, 14 78 Q 12 58, 22 44 Q 38 30, 50 8 Z" fill="#E8B48C" stroke="#E8823C" stroke-width="4"></path>
+          <path d="M50 52 Q 64 68, 64 84 Q 62 102, 50 104 Q 38 102, 36 84 Q 36 68, 50 52 Z" fill="#F5C97B" stroke="#E8823C" stroke-width="3"></path>
+          <circle cx="44" cy="80" r="3.5" fill="#4A3B2A"></circle><circle cx="56" cy="80" r="3.5" fill="#4A3B2A"></circle>
+          <path d="M44 90 q 6 5, 12 0" stroke="#4A3B2A" stroke-width="2.5" fill="none" stroke-linecap="round"></path>
+        </svg>
+      </div>
+      <div class="name">Das Feuer</div>
+      <p>Feuer ist heiß! Streichhölzer sind nichts für Kinderhände.</p>
+    </div>
+
+    <div class="danger-card smog" id="smog">
+      <div class="art">
+        <svg width="130" height="106" viewBox="0 0 130 106" aria-hidden="true">
+          <path d="M32 68 Q 14 68, 14 52 Q 14 38, 29 37 Q 32 20, 51 20 Q 66 20, 72 32 Q 78 24, 90 28 Q 102 32, 101 44 Q 116 44, 116 56 Q 116 68, 102 68 Z" fill="#D9DDE1" stroke="#8E9BA6" stroke-width="4" stroke-linejoin="round"></path>
+          <circle cx="52" cy="46" r="3.5" fill="#4A3B2A"></circle><circle cx="72" cy="46" r="3.5" fill="#4A3B2A"></circle>
+          <path d="M54 60 q 8 -6, 16 0" stroke="#4A3B2A" stroke-width="3" fill="none" stroke-linecap="round"></path>
+          <g stroke="#8E9BA6" stroke-width="3.5" fill="none" stroke-linecap="round">
+            <path d="M28 82 q 8 -6, 16 0 q 8 6, 16 0 q 8 -6, 16 0"></path>
+            <path d="M44 96 q 8 -6, 16 0 q 8 6, 16 0"></path>
+          </g>
+        </svg>
+      </div>
+      <div class="name">Der Smog</div>
+      <p>Smog ist schmutzige Luft. Sie ist nicht gut zum Atmen.</p>
+    </div>
   </div>
 
-  <div class="quiz">
+  <div class="quiz" id="quiz">
     <div class="quiz-title">Denk nach!</div>
-    <p class="question">Du siehst eine Qualle am Strand. Was machst du?</p>
-    <div class="quiz-options">
-      <button class="orange" data-answer="wrong">Anfassen!</button>
-      <button class="green" data-answer="right">Nur angucken</button>
-      <button class="blue" data-answer="wrong">Mit nach Hause nehmen</button>
+    <p class="quiz-progress"></p>
+    <div class="quiz-question-row">
+      <p class="question"></p>
+      <button class="say-btn say-mini quiz-say" aria-label="Frage vorlesen" title="Vorlesen">🔊</button>
     </div>
+    <div class="quiz-options"></div>
     <p class="quiz-feedback" hidden></p>
+    <button class="quiz-next" hidden>Weiter →</button>
   </div>
 </main>
 

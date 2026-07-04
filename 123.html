@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>1 2 3 — COM</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Gochi+Hand&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+  <nav class="topnav">
+    <a class="logo" href="index.html" aria-label="COM Startseite"><span>C</span><span>O</span><span>M</span></a>
+    <div class="spacer"></div>
+    <div class="nav-links">
+      <a class="nav-btn orange" href="index.html">Start</a>
+      <a class="nav-btn blue" href="gefaehrlich.html">Gefährlich!</a>
+      <a class="nav-btn green" href="abc.html">ABC-Tier</a>
+      <a class="nav-btn blue active" href="123.html">1 2 3</a>
+      <a class="nav-btn orange tilt-r" href="freunde.html">Freunde</a>
+    </div>
+  </nav>
+  <div class="wave orange"></div>
+</header>
+
+<main class="page centered">
+  <h1 class="math-title">1 2 3 — Zahlen!</h1>
+  <p class="lead" style="margin-bottom: 40px;">Schreib die Zahlen mit dem Finger und rechne mit Plus und Minus!</p>
+
+  <section class="trace-card" id="schreiben">
+    <h2 class="math-sub">Schreib die Zahl!</h2>
+    <div class="trace-target-row">
+      <div class="trace-target">1</div>
+      <button class="say-btn say-mini trace-say" aria-label="Zahl vorlesen" title="Vorlesen">🔊</button>
+    </div>
+    <canvas class="trace-canvas" width="320" height="380" aria-label="Malfläche zum Zahlen schreiben"></canvas>
+    <div class="trace-buttons">
+      <button class="math-btn green trace-check">✔ Prüfen</button>
+      <button class="math-btn orange trace-clear">↺ Löschen</button>
+      <button class="math-btn blue trace-next" hidden>Weiter →</button>
+    </div>
+    <p class="math-feedback trace-feedback" hidden></p>
+  </section>
+
+  <section class="math-game" id="rechnen">
+    <h2 class="math-sub">Plus und Minus</h2>
+    <div class="mode-switch">
+      <button class="mode-btn active" data-mode="tap">👆 Tippen</button>
+      <button class="mode-btn" data-mode="draw">✏️ Malen</button>
+      <button class="mode-btn" data-mode="balloon">🎈 Ballons</button>
+    </div>
+    <div class="task-emoji" aria-hidden="true"></div>
+    <div class="task-text-row">
+      <div class="task-text"></div>
+      <button class="say-btn say-mini task-say" aria-label="Aufgabe vorlesen" title="Vorlesen">🔊</button>
+    </div>
+    <div class="answer-tap answer-area"></div>
+    <div class="answer-draw answer-area" hidden>
+      <canvas class="draw-canvas" width="240" height="280" aria-label="Malfläche für die Antwort"></canvas>
+      <div class="trace-buttons">
+        <button class="math-btn green draw-check">✔ Prüfen</button>
+        <button class="math-btn orange draw-clear">↺ Löschen</button>
+      </div>
+    </div>
+    <div class="answer-balloon answer-area" hidden></div>
+    <p class="math-feedback game-feedback" hidden></p>
+    <button class="math-btn blue game-next" hidden>Nächste Aufgabe →</button>
+    <p class="math-stars"></p>
+  </section>
+</main>
+
+<footer>
+  <div class="wave blue"></div>
+  <p>COM · gemacht von Kindern, für Kinder</p>
+</footer>
+
+<script src="js/app.js"></script>
+</body>
+</html>
