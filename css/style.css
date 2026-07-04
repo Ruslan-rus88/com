@@ -801,14 +801,16 @@ footer .wave { margin-top: 20px; }
 .math-btn.blue { border-color: var(--blue); color: var(--blue); }
 .game-next { margin-top: 18px; }
 
-.mode-switch {
+.mode-switch, .op-switch {
   display: flex;
   gap: 12px;
   justify-content: center;
   flex-wrap: wrap;
   margin-bottom: 22px;
 }
-.mode-btn {
+.op-switch { margin-bottom: 14px; }
+.answer-area[hidden] { display: none !important; }
+.mode-btn, .op-btn {
   font-family: 'Patrick Hand', cursive;
   font-size: 21px;
   padding: 9px 20px;
@@ -819,8 +821,8 @@ footer .wave { margin-top: 20px; }
   cursor: pointer;
   transition: transform 0.15s;
 }
-.mode-btn:hover { transform: scale(1.08); }
-.mode-btn.active { background: #FFF3DF; border-color: var(--orange); }
+.mode-btn:hover, .op-btn:hover { transform: scale(1.08); }
+.mode-btn.active, .op-btn.active { background: #FFF3DF; border-color: var(--orange); }
 
 .task-emoji {
   font-size: 34px;

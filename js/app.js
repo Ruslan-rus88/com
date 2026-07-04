@@ -600,12 +600,13 @@ if (traceCard) {
   const taskEmojis = ['🍎', '🍓', '⭐', '🐠', '🎈', '🍪'];
   const answerColors = ['orange', 'blue', 'green'];
   let mode = 'tap';
+  let opChoice = 'both';
   let task = null;
   let stars = 0;
   let taskSolved = false;
 
   const makeTask = () => {
-    const plus = Math.random() < 0.5;
+    const plus = opChoice === '+' ? true : opChoice === '-' ? false : Math.random() < 0.5;
     let a, b;
     if (plus) {
       a = 1 + Math.floor(Math.random() * 5);
@@ -716,6 +717,14 @@ if (traceCard) {
     if (taskSolved) return;
     if (digitCheck(drawPad.ink, String(task.result))) win();
     else miss();
+  });
+  game.querySelectorAll('.op-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      game.querySelectorAll('.op-btn').forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+      opChoice = btn.dataset.op;
+      renderTask();
+    });
   });
   game.querySelectorAll('.mode-btn').forEach((btn) => {
     btn.addEventListener('click', () => {
